@@ -62,7 +62,6 @@ class CardController implements Icard {
       res.status(200).json(cards)
 
     } catch (error) {
-      console.log("error -> ", error)
       const err = new AppError(500, "failed to find cards")
       throw err
     }
@@ -114,7 +113,9 @@ class CardController implements Icard {
 
       await this.repo.card.Delete(cardID)
 
-      res.status(204).send()
+      const cards = await this.repo.card.Find()
+
+      res.status(200).json(cards)
 
     } catch (error) {
       const err = new AppError(500, "failed to create card")

@@ -32,7 +32,7 @@ class AuthController implements Iauth {
     }
 
     const token = this.generateToken(login)
-    res.status(200).json({ token })
+    res.status(200).json(token)
     return
   }
 
